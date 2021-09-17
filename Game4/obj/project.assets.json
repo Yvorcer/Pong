@@ -7380,23 +7380,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yvo\\.nuget\\packages\\": {},
+    "C:\\Users\\sebas\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yvo\\source\\repos\\Game4\\Game4\\Game4.csproj",
+      "projectUniqueName": "C:\\Users\\sebas\\source\\repos\\Pongg\\Game4\\Game4.csproj",
       "projectName": "Game4",
-      "projectPath": "C:\\Users\\Yvo\\source\\repos\\Game4\\Game4\\Game4.csproj",
-      "packagesPath": "C:\\Users\\Yvo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yvo\\source\\repos\\Game4\\Game4\\obj\\",
+      "projectPath": "C:\\Users\\sebas\\source\\repos\\Pongg\\Game4\\Game4.csproj",
+      "packagesPath": "C:\\Users\\sebas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sebas\\source\\repos\\Pongg\\Game4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Yvo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

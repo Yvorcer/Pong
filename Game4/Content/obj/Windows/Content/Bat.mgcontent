@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Yvo/source/repos/Game4/Game4/Content/Bat.png</SourceFile>
-  <SourceTime>2020-09-27T11:44:24.9007367+02:00</SourceTime>
-  <DestFile>C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Bat.xnb</DestFile>
-  <DestTime>2021-09-15T14:13:20.9047251+02:00</DestTime>
+  <SourceFile>C:/Users/sebas/source/repos/Pongg/Game4/Content/Bat.png</SourceFile>
+  <SourceTime>2021-09-17T11:35:52.1294666+02:00</SourceTime>
+  <DestFile>C:/Users/sebas/source/repos/Pongg/Game4/Content/bin/Windows/Content/Bat.xnb</DestFile>
+  <DestTime>2021-09-17T11:36:21.9610111+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
