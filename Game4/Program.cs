@@ -10,5 +10,7 @@ namespace Game4
             using (var game = new Pong())
                 game.Run();
         }
+
+        //test
     }
 }
