@@ -8,7 +8,7 @@ namespace Game4
     class Ball
     {
         Texture2D ball;
-        Vector2 ballPosition, ballOrigin;
+        Vector2 ballPosition, ballOrigin, startPos;
         public Vector2 direction = Vector2.One;
         public Rectangle collisionBox;
         public float speed = 5.0f;
@@ -25,8 +25,8 @@ namespace Game4
             this.windowHeight = windowheight;
 
             ball = Content.Load<Texture2D>("Ball");
-
-            ballPosition = new Vector2(windowWidth / 2, windowheight / 2);
+            startPos = new Vector2(windowWidth / 2, windowheight / 2);
+            BallReset();
             ballOrigin = new Vector2(ball.Width, ball.Height) / 2;
         } 
 
@@ -36,8 +36,10 @@ namespace Game4
 
             if (ballPosition.Y >= windowHeight || ballPosition.Y <= 0)
                 direction.Y *= -1;
-
-            //OnCollission();
+            if (ballPosition.X >= windowWidth || ballPosition.X <= 0)
+            {
+                Score();
+            }
 
             collisionBox = new Rectangle((int)ballPosition.X - (ball.Width / 2), (int)ballPosition.Y - (ball.Height / 2), ball.Width, ball.Height);
 
@@ -53,10 +55,13 @@ namespace Game4
 
         private void Score()
         {
-            if (ballPosition.X >= windowWidth || ballPosition.X <= 0)
-            {
-
-            }
+            BallReset();
+            speed = 5.0f;
+        }
+        
+        private void BallReset()
+        {
+            ballPosition = startPos;
         }
 
 
