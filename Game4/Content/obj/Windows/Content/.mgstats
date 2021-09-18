@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/sebas/source/repos/Pongg/Game4/Content/Background.png","C:/Users/sebas/source/repos/Pongg/Game4/Content/bin/Windows/Content/Background.xnb","TextureProcessor","Texture2DContent",2280,1536085,0.040633
-"C:/Users/sebas/source/repos/Pongg/Game4/Content/ball.png","C:/Users/sebas/source/repos/Pongg/Game4/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",132,1109,0.1259371
-"C:/Users/sebas/source/repos/Pongg/Game4/Content/Bat.png","C:/Users/sebas/source/repos/Pongg/Game4/Content/bin/Windows/Content/Bat.xnb","TextureProcessor","Texture2DContent",160,6485,0.0016298
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/Background.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Background.xnb","TextureProcessor","Texture2DContent",2280,1536085,0.0528118
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/ball.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",132,1109,0.1781048
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/Bat.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Bat.xnb","TextureProcessor","Texture2DContent",160,6485,0.0019821
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/ScoreFont.spritefont","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/ScoreFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,267298,0.3506881

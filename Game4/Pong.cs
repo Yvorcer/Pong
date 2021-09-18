@@ -11,8 +11,8 @@ namespace Game4
         Texture2D  background;
         Paddle paddleL, paddleR;
         Ball ball;
-        Rectangle ballCollision;
-
+        private SpriteFont font;
+        int ScoreL, ScroreR;
         public Pong()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -29,8 +29,10 @@ namespace Game4
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = Content.Load<Texture2D>("Background");
+            font = Content.Load<SpriteFont>("ScoreFont");
             paddleR = new Paddle(Content, (int)GraphicsDevice.Viewport.Width - 15, (int)GraphicsDevice.Viewport.Height / 2, Keys.Up, Keys.Down);
             paddleL = new Paddle(Content, 15, (int)GraphicsDevice.Viewport.Height / 2, Keys.W, Keys.S);
+            
             ball = new Ball(Content,  (int)GraphicsDevice.Viewport.Width, (int)GraphicsDevice.Viewport.Height);                                 
 
         }
@@ -54,7 +56,9 @@ namespace Game4
             //spriteBatch.DrawString("")
             paddleL.Draw(gameTime, spriteBatch);
             paddleR.Draw(gameTime, spriteBatch);
+            spriteBatch.DrawString(font, ScoreL.ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - 150, 150), Color.White); ;
             ball.Draw(gameTime, spriteBatch);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);

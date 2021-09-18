@@ -76,3 +76,4 @@ C:\Users\sebas\source\repos\Pongg\Game4\obj\Debug\netcoreapp3.1\Game4.csproj.Cop
 C:\Users\sebas\source\repos\Pongg\Game4\obj\Debug\netcoreapp3.1\Game4.dll
 C:\Users\sebas\source\repos\Pongg\Game4\obj\Debug\netcoreapp3.1\Game4.pdb
 C:\Users\sebas\source\repos\Pongg\Game4\obj\Debug\netcoreapp3.1\Game4.genruntimeconfig.cache
+C:\Users\Yvo\source\repos\Game4\Game4\bin\Debug\netcoreapp3.1\Content\ScoreFont.xnb

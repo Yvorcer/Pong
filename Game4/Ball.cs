@@ -14,10 +14,7 @@ namespace Game4
         public float speed = 5.0f;
         int windowWidth, windowHeight;
 
-        //public Rectangle Rectangle
-        //{
-        //    get { return collisionBox; }
-        //}
+
 
         public Ball(ContentManager Content, int windowWidth, int windowheight)
         {

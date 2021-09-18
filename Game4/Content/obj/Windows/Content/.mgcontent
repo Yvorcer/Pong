@@ -4,11 +4,13 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sebas/source/repos/Pongg/Game4/Content/ball.png</File>
-    <File>C:/Users/sebas/source/repos/Pongg/Game4/Content/Background.png</File>
-    <File>C:/Users/sebas/source/repos/Pongg/Game4/Content/Bat.png</File>
+    <File>C:/Users/Yvo/source/repos/Game4/Game4/Content/ball.png</File>
+    <File>C:/Users/Yvo/source/repos/Game4/Game4/Content/Background.png</File>
+    <File>C:/Users/Yvo/source/repos/Game4/Game4/Content/Bat.png</File>
+    <File>C:/Users/Yvo/source/repos/Game4/Game4/Content/ScoreFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
