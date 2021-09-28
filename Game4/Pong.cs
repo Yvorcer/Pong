@@ -53,10 +53,12 @@ namespace Game4
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
-            //spriteBatch.DrawString("")
             paddleL.Draw(gameTime, spriteBatch);
             paddleR.Draw(gameTime, spriteBatch);
+
             spriteBatch.DrawString(font, ScoreL.ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - 150, 150), Color.White); ;
+            
+            
             ball.Draw(gameTime, spriteBatch);
             
             spriteBatch.End();

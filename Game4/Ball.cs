@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Game4
 {
@@ -12,8 +13,9 @@ namespace Game4
         public Vector2 direction = Vector2.One;
         public Rectangle collisionBox;
         public float speed = 5.0f;
-        int windowWidth, windowHeight;
-
+        private int windowWidth, windowHeight;
+        Random random = new Random();
+        
 
 
         public Ball(ContentManager Content, int windowWidth, int windowheight)
@@ -39,28 +41,30 @@ namespace Game4
             }
 
             collisionBox = new Rectangle((int)ballPosition.X - (ball.Width / 2), (int)ballPosition.Y - (ball.Height / 2), ball.Width, ball.Height);
-
-
         }
 
         public void Draw(GameTime gametime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(ball, ballPosition, Color.White);
             spriteBatch.Draw(ball, ballPosition, collisionBox, Color.White, 0.0f, ballOrigin, 1.0f, SpriteEffects.None, 0.0f);
-
         }
 
         private void Score()
         {
-            BallReset();
             speed = 5.0f;
+            BallReset();
         }
         
         private void BallReset()
         {
             ballPosition = startPos;
+            double randomDir = random.NextDouble();
+
+            if(randomDir >= 0.5)
+            {
+                direction = new Vector2(-1, 1);
+            }
+            else
+                direction = new Vector2(1, -1);
         }
-
-
     }
 }
