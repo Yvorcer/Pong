@@ -7,9 +7,10 @@ namespace Game4
 {
     class Paddle
     {
-        Vector2 paddlePosition, paddleOrigin;
+        public Vector2 paddlePosition;
+        Vector2 paddleOrigin;
         Texture2D paddle;
-        float paddleSpeed = 5.0f;
+        float paddleSpeed = 0.5f;
         private Keys keyUp, keyDown;
         public Rectangle collisionBox;
 
@@ -25,17 +26,18 @@ namespace Game4
 
         public void Update(GameTime gametime, int windowHeight)
         {
+            var delta = (float)gametime.ElapsedGameTime.Milliseconds;
             if (Keyboard.GetState().IsKeyDown(keyUp) && paddlePosition.Y - (paddle.Height / 2) > 0)
-                paddlePosition.Y -= paddleSpeed;
+                paddlePosition.Y -= paddleSpeed * delta;
             if (Keyboard.GetState().IsKeyDown(keyDown) && paddlePosition.Y + (paddle.Height / 2) < windowHeight)
-                paddlePosition.Y += paddleSpeed;
+                paddlePosition.Y += paddleSpeed * delta;
 
             collisionBox = new Rectangle((int)paddlePosition.X - (paddle.Width/2), (int)paddlePosition.Y - (paddle.Height / 2), paddle.Width, paddle.Height);
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(paddle, paddlePosition, collisionBox, Color.White, 0.0f, paddleOrigin, 1.0f, SpriteEffects.None, 0.0f);
+            spriteBatch.Draw(paddle, paddlePosition, collisionBox, color, 0.0f, paddleOrigin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
     }
