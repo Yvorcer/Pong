@@ -12,7 +12,6 @@ namespace Game4
         float paddleSpeed = 5.0f;
         private Keys keyUp, keyDown;
         public Rectangle collisionBox;
-        //public Rectangle Rectangle { get { } }
 
         public Paddle(ContentManager Content, int startX, int startY, Keys keyUp, Keys keyDown) 
         {
@@ -36,7 +35,6 @@ namespace Game4
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(paddle, collisionBox, Color.White);
             spriteBatch.Draw(paddle, paddlePosition, collisionBox, Color.White, 0.0f, paddleOrigin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
