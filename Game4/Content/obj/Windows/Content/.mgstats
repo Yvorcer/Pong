@@ -1,1 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/Background.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Background.xnb","TextureProcessor","Texture2DContent",2280,1536085,0.096323
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/ball.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",132,1109,0.3655236
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/Bat.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Bat.xnb","TextureProcessor","Texture2DContent",160,6485,0.004966
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/Hearth.png","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/Hearth.xnb","TextureProcessor","Texture2DContent",160,925,0.1880731
+"C:/Users/Yvo/source/repos/Game4/Game4/Content/ScoreFont.spritefont","C:/Users/Yvo/source/repos/Game4/Game4/Content/bin/Windows/Content/ScoreFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,267298,0.3772741

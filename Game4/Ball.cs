@@ -15,6 +15,7 @@ namespace Game4
         public float speed = 5.0f;
         private int windowWidth, windowHeight;
         Random random = new Random();
+        public int LivesL = 3, LivesR = 3;
         
 
 
@@ -29,7 +30,7 @@ namespace Game4
             ballOrigin = new Vector2(ball.Width, ball.Height) / 2;
         } 
 
-        public void Update(GameTime gametime)
+        public void Update(GameTime gametime, int numLivesR, int numLivesL)
         {
             ballPosition += direction * speed;
 
@@ -37,7 +38,7 @@ namespace Game4
                 direction.Y *= -1;
             if (ballPosition.X >= windowWidth || ballPosition.X <= 0)
             {
-                Score();
+                Score(numLivesR, numLivesL);
             }
 
             collisionBox = new Rectangle((int)ballPosition.X - (ball.Width / 2), (int)ballPosition.Y - (ball.Height / 2), ball.Width, ball.Height);
@@ -48,14 +49,29 @@ namespace Game4
             spriteBatch.Draw(ball, ballPosition, collisionBox, Color.White, 0.0f, ballOrigin, 1.0f, SpriteEffects.None, 0.0f);
         }
 
-        private void Score()
+        private void Score(int numLivesR, int numLivesL)
         {
-            speed = 5.0f;
-            BallReset();
+
+            if (ballPosition.X <= 0)
+            {          
+                LivesL--;
+                BallReset();
+            }
+            else
+            {
+                LivesR--;
+                BallReset();
+            }
         }
+
+
+
+       
+
         
         private void BallReset()
         {
+            speed = 5.0f;
             ballPosition = startPos;
             double randomDir = random.NextDouble();
 
