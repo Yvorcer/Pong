@@ -117,3 +117,12 @@ C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\obj\Debug\netcoreapp3.1\Game4.c
 C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\obj\Debug\netcoreapp3.1\Game4.dll
 C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\obj\Debug\netcoreapp3.1\Game4.pdb
 C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\obj\Debug\netcoreapp3.1\Game4.genruntimeconfig.cache
+C:\Users\Yvo\source\repos\Game4\Game4\bin\Debug\netcoreapp3.1\Content\Hearth.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Hearth.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\PongLogo.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\smallFont.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Sounds\GameEnd.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Sounds\PaddleHit.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Sounds\PointLost.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Sounds\Selected.xnb
+C:\Users\yvode\Desktop\New folder (2)\Pong\Game4\bin\Debug\netcoreapp3.1\Content\Sounds\WallHit.xnb

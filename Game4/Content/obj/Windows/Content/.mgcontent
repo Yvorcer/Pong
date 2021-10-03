@@ -4,12 +4,26 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/ball.png</File>
     <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Background.png</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/ball.png</File>
     <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Bat.png</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Hearth.png</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/PongLogo.png</File>
     <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/ScoreFont.spritefont</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/smallFont.spritefont</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Sounds/PaddleHit.wav</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Sounds/PointLost.wav</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Sounds/Selected.wav</File>
+    <File>C:/Users/yvode/Desktop/New folder (2)/Pong/Game4/Content/Sounds/WallHit.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
