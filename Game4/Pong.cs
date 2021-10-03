@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System;
 
 namespace Game4
@@ -9,123 +10,225 @@ namespace Game4
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Texture2D background, hearthSprite, paddle;
-        Paddle paddleL, paddleR;
-        Ball ball;
         InputHelper inputHelper;
-        private SpriteFont font;
-        bool pause;
+
+        //GameStates
+        TitleScreen titleScreen;
+        MenuScreen menuScreen;
+        GameWorld gameWorld;
+        PongMultiplayer multiplayer;
+        PongCpu pongCpu;
+
+        static SpriteFont bigFont, smallFont; //Fonts
+        static SoundEffect wallHit, paddleHit, pointLost, selected;
+        static Random random;
+        static Vector2 screenSize;
+
+        public GameStates gameState;
+
+        
+        [STAThread]
+        static void Main()
+        {
+            Pong game = new Pong();
+            game.Run();
+        }
 
         public Pong()
         {
-            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
-            inputHelper = new InputHelper();
-        }
+            graphics = new GraphicsDeviceManager(this);
 
-        protected override void Initialize()
-        {
-            base.Initialize();
+            IsMouseVisible = true;
+            random = new Random();
+            inputHelper = new InputHelper();
+
+            gameState = GameStates.TitleScreen;
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            background = Content.Load<Texture2D>("Background");
-            hearthSprite = Content.Load<Texture2D>("Hearth");
-            font = Content.Load<SpriteFont>("ScoreFont");
-            paddle = Content.Load<Texture2D>("Bat");
-            paddleR = new Paddle(Content, (int)GraphicsDevice.Viewport.Width - 15, (int)GraphicsDevice.Viewport.Height / 2, Keys.Up, Keys.Down);
-            paddleL = new Paddle(Content, 15, (int)GraphicsDevice.Viewport.Height / 2, Keys.W, Keys.S);
             
-            ball = new Ball(Content,  (int)GraphicsDevice.Viewport.Width, (int)GraphicsDevice.Viewport.Height);
+            // Loading in Fonts
+            bigFont = Content.Load<SpriteFont>("ScoreFont");
+            smallFont = Content.Load<SpriteFont>("smallFont");
 
-            
+            // Loading in Sounds
+            wallHit = Content.Load<SoundEffect>("Sounds/WallHit");
+            paddleHit = Content.Load<SoundEffect>("Sounds/PaddleHit");
+            pointLost = Content.Load<SoundEffect>("Sounds/PointLost");
+            selected = Content.Load<SoundEffect>("Sounds/Selected");
+
+            screenSize = new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            titleScreen = new TitleScreen(Content);
+            menuScreen = new MenuScreen(Content);
+            gameWorld = new GameWorld(Content);
+            multiplayer = new PongMultiplayer(Content);
+            pongCpu = new PongCpu(Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            HandleInput(inputHelper);
             inputHelper.Update();
-            Input();
-            if (!pause)
+            switch (gameState)
             {
-                paddleL.Update(gameTime, GraphicsDevice.Viewport.Height);
-                paddleR.Update(gameTime, GraphicsDevice.Viewport.Height);
-                ball.Update(gameTime);
-                OnCollission();
-            }
-        }
-
-        private void Input()
-        {
-            if (inputHelper.KeyPressed(Keys.Escape))
-            {
-                pause = !pause;
+                case GameStates.TitleScreen:
+                    break;
+                case GameStates.MenuScreen:                    
+                    break;
+                case GameStates.PongGame:
+                    gameWorld.Update(gameTime);
+                    gameWorld.HandleInput(inputHelper);
+                    break;
+                case GameStates.PongMultiplayer:
+                    multiplayer.Update(gameTime);
+                    multiplayer.HandleInput(inputHelper);
+                    break;
+                case GameStates.PongCpu:
+                    pongCpu.Update(gameTime);
+                    pongCpu.HandleInput(inputHelper);
+                    break;
             }
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, Matrix.CreateScale(1));
-            spriteBatch.Draw(background, Vector2.Zero, Color.White);
-            paddleL.Draw(gameTime, spriteBatch, Color.Blue);
-            paddleR.Draw(gameTime, spriteBatch, Color.Red);
-
-            for (int i = 0; i < ball.LivesL; i++)
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
+            switch (gameState)
             {
-                Vector2 hearthPosition = new Vector2(i * 25, 3);
-                spriteBatch.Draw(hearthSprite, hearthPosition,  null, Color.Blue, 0.0f, Vector2.Zero, 2.0f,  SpriteEffects.None, 0.0f);
+                case GameStates.TitleScreen:
+                    titleScreen.Draw(gameTime, spriteBatch);
+                    break;
+                case GameStates.MenuScreen:
+                    menuScreen.Draw(gameTime, spriteBatch);
+                    break;
+                case GameStates.PongGame:
+                    gameWorld.Draw(gameTime, spriteBatch);
+                    break;
+                case GameStates.PongMultiplayer:
+                    multiplayer.Draw(gameTime, spriteBatch);
+                    break;
+                case GameStates.PongCpu:
+                    pongCpu.Draw(gameTime, spriteBatch);
+                    break;
             }
-            for (int i = 0; i < ball.LivesR; i++)
-            {
-                Vector2 hearthPosition = new Vector2(i * -25 + 770, 3);
-                spriteBatch.Draw(hearthSprite, hearthPosition, null, Color.Red, 0.0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0.0f);
-            }
-
-            if (pause)
-            {
-                spriteBatch.DrawString(font, "PAUSE!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 130, 150), Color.White); 
-            }
-            
-            
-            ball.Draw(gameTime, spriteBatch);
-            
             spriteBatch.End();
-            
-            base.Draw(gameTime);
         }
-        private void OnCollission()
+
+        private void HandleInput(InputHelper inputHelper)
         {
-            if (ball.collisionBox.Intersects(paddleL.collisionBox))
+            switch (gameState)
             {
-                Vector2 collisionPoint = ball.ballPosition;
-                
-                float width = paddle.Height / 2;
-                float offset = paddleL.paddlePosition.Y  - ball.ballPosition.Y;
-
-                float percentage = (offset / width);
-                ball.direction.X *= -1;
-                ball.direction = new Vector2(ball.direction.X, -percentage);
-                ball.direction.Normalize();
-
-                ball.speed *= 1.03f;
+                case GameStates.TitleScreen:
+                    if (inputHelper.KeyPressed(Keys.Enter) || inputHelper.KeyPressed(Keys.Space))
+                    {
+                        gameState = GameStates.MenuScreen;
+                        selected.Play();
+                    }
+                    break;
+                case GameStates.MenuScreen:
+                    if (inputHelper.KeyPressed(Keys.D1))
+                    {
+                        gameState = GameStates.PongGame;
+                        selected.Play();
+                    }
+                    else if (inputHelper.KeyPressed(Keys.D2))
+                    {
+                        gameState = GameStates.PongMultiplayer;
+                        selected.Play();
+                    }
+                    else if (inputHelper.KeyPressed(Keys.D3))
+                    {
+                        gameState = GameStates.PongCpu;
+                        selected.Play();
+                    }
+                    break;
+                case GameStates.PongGame:
+                    if (inputHelper.KeyPressed(Keys.Enter) && gameWorld.pause)
+                    {
+                        gameWorld.Reset();
+                        selected.Play();
+                    }
+                    else if (inputHelper.KeyPressed(Keys.Back) && gameWorld.pause)
+                    {
+                        gameState = GameStates.TitleScreen;
+                        gameWorld.Reset();
+                        selected.Play();
+                    }
+                    break;
+                case GameStates.PongMultiplayer:
+                    if (inputHelper.KeyPressed(Keys.Enter) && multiplayer.pause)
+                    {
+                        multiplayer.Reset();
+                        selected.Play();
+                    }
+                    else if (inputHelper.KeyPressed(Keys.Back) && multiplayer.pause)
+                    {
+                        gameState = GameStates.TitleScreen;
+                        multiplayer.Reset();
+                        selected.Play();
+                    }
+                    break;
+                case GameStates.PongCpu:
+                    if (inputHelper.KeyPressed(Keys.Enter) && pongCpu.pause)
+                    {
+                        pongCpu.Reset();
+                        selected.Play();
+                    }
+                    else if (inputHelper.KeyPressed(Keys.Back) && pongCpu.pause)
+                    {
+                        gameState = GameStates.TitleScreen;
+                        pongCpu.Reset();
+                        selected.Play();
+                    }
+                    break;
             }
-            else if (ball.collisionBox.Intersects(paddleR.collisionBox))
-            {
-                Vector2 collisionPoint = ball.ballPosition;
+        }
 
-                float width = paddle.Height / 2;
-                float offset = paddleR.paddlePosition.Y - ball.ballPosition.Y;
 
-                float percentage = (offset / width);
-                ball.direction.X *= -1;
-                ball.direction = new Vector2(ball.direction.X, -percentage);
-                ball.direction.Normalize();
+        public static Vector2 Screen
+        {
+            get { return screenSize; }
+        }
+        public static Random Random
+        {
+            get { return random; }
+        }
+        public static SpriteFont BigFont
+        {
+            get { return bigFont; }
+        }
+        public static SpriteFont SmallFont
+        {
+            get { return smallFont; }
+        }
 
-                ball.speed *= 1.03f;
-            }
+        public static SoundEffect WallHit
+        {
+            get { return wallHit; }
+        }
+        public static SoundEffect PaddleHit
+        {
+            get { return paddleHit; }
+        }
+        public static SoundEffect PointLost
+        {
+            get { return pointLost; }
+        }
+        public static SoundEffect Selected
+        {
+            get { return selected; }
+        }
+
+        public enum GameStates // All the different Gamestates in the game.
+        {
+            TitleScreen,
+            MenuScreen,
+            PongGame,
+            PongMultiplayer,
+            PongCpu,
         }
     }
 }
